@@ -8,12 +8,15 @@ cask "dash@6" do
   homepage "https://kapeli.com/dash"
 
   livecheck do
-    url "https://kapeli.com/Dash6.xml"
+    url "https://kapeli.com/Dash#{version.major}.xml"
     strategy :sparkle, &:short_version
   end
 
   auto_updates true
-  conflicts_with cask: "dash"
+  conflicts_with cask: [
+    "dash",
+    "dash@7",
+  ]
   depends_on macos: ">= :high_sierra"
 
   app "Dash.app"
